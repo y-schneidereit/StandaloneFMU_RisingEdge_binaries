@@ -74,10 +74,10 @@ int main(int argc, char *argv[]) {
 
 	// Informs the FMU to setup the experiment. Must be called after fmi2Instantiate and befor fmi2EnterInitializationMode
 	CHECK_STATUS(SetupExperimentPtr(c, fmi2False, 0, Time, fmi2False, 0));
-	/*
+	
 	// Informs the FMU to enter Initialization Mode.
-	CHECK_STATUS(RisingEdge_fmi2EnterInitializationMode(c));
-
+	CHECK_STATUS(EnterInitializationModePtr(c));
+	
 	fmi2ValueReference u_ref = 0;
 	fmi2Boolean u = 0;
 
@@ -86,12 +86,12 @@ int main(int argc, char *argv[]) {
 	
 	fmi2Real zaehler = 0;
 
-	CHECK_STATUS(RisingEdge_fmi2SetBoolean(c, &u_ref, 1, &u));
+	//CHECK_STATUS(SetBooleanPtr(c, &u_ref, 1, &u));
 
-	CHECK_STATUS(RisingEdge_fmi2ExitInitializationMode(c));
+	CHECK_STATUS(ExitInitializationModePtr(c));
 
 	printf("time, u, T\n");
-
+	/*
 	for (int nSteps = 0; nSteps <= 20; nSteps++) {
 
 		Time = nSteps * stepSize;
