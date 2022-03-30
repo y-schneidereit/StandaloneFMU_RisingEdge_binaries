@@ -121,10 +121,10 @@ int main(int argc, char *argv[]) {
 	}
 	
 TERMINATE:
-
+	TerminatePtr(c);
 	// clean up
 	if (status < fmi2Fatal) {
-		//RisingEdge_fmi2FreeInstance(c);
+		FreeInstancePtr(c);
 	}
 	
 	return status;
