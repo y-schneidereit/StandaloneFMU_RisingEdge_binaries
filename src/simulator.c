@@ -63,18 +63,18 @@ int main(int argc, char *argv[]) {
 	fmi2Status status = fmi2OK;
 
 	fmi2CallbackFunctions callbacks = {cb_logMessage, cb_allocateMemory, cb_freeMemory, NULL, NULL};
-	/*
-	fmi2Component c = RisingEdge_fmi2Instantiate("instance1", fmi2CoSimulation, GUID, RESOURCE_LOCATION, &callbacks, fmi2False, fmi2False);
+	
+	fmi2Component c = InstantiatePtr("instance1", fmi2CoSimulation, GUID, RESOURCE_LOCATION, &callbacks, fmi2False, fmi2False);
 	
 	if (!c) return 1;
-
+	
 	fmi2Real Time = 0;
 	fmi2Real stepSize = 0.5;
 	fmi2Real stopTime = 10;
 
 	// Informs the FMU to setup the experiment. Must be called after fmi2Instantiate and befor fmi2EnterInitializationMode
-	CHECK_STATUS(RisingEdge_fmi2SetupExperiment(c, fmi2False, 0, Time, fmi2False, 0));
-	
+	CHECK_STATUS(SetupExperimentPtr(c, fmi2False, 0, Time, fmi2False, 0));
+	/*
 	// Informs the FMU to enter Initialization Mode.
 	CHECK_STATUS(RisingEdge_fmi2EnterInitializationMode(c));
 
