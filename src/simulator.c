@@ -90,26 +90,24 @@ int main(int argc, char *argv[]) {
 	
 	fmi2Real zaehler = 0;
 
-	//CHECK_STATUS(SetBooleanPtr(c, &u_ref, 1, &u));
+	CHECK_STATUS(SetBooleanPtr(c, &u_ref, 1, &u));
 
 	CHECK_STATUS(ExitInitializationModePtr(c));
 
 	printf("time, u, T\n");
-	/*
+	
 	for (int nSteps = 0; nSteps <= 20; nSteps++) {
 
 		Time = nSteps * stepSize;
 
 		// set an input
-		CHECK_STATUS(RisingEdge_fmi2SetBoolean(c, &u_ref, 1, &u));
-
+		CHECK_STATUS(SetBooleanPtr(c, &u_ref, 1, &u));
 		
-
 		// perform a simulation step
-		CHECK_STATUS(RisingEdge_fmi2DoStep(c, Time, stepSize, fmi2True));	//The computation of a time step is started.
+		CHECK_STATUS(DoStepPtr(c, Time, stepSize, fmi2True));	//The computation of a time step is started.
 		
 		// get an output
-		CHECK_STATUS(RisingEdge_fmi2GetBoolean(c, &T_ref, 1, &T));
+		CHECK_STATUS(GetBooleanPtr(c, &T_ref, 1, &T));
 		
 		printf("%.2f, %d, %d\n", Time, u, T);
 
@@ -121,7 +119,7 @@ int main(int argc, char *argv[]) {
 
 		zaehler++;
 	}
-	*/
+	
 TERMINATE:
 
 	// clean up
