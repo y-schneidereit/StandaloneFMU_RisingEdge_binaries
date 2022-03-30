@@ -38,6 +38,8 @@ int main(int argc, char *argv[]) {
 	fmi2TerminateTYPE* TerminatePtr = NULL;
 	fmi2SetRealTYPE* SetRealPtr = NULL;
 	fmi2GetRealTYPE* GetRealPtr = NULL;
+	fmi2SetBooleanTYPE* SetBooleanPtr = NULL;
+	fmi2GetBooleanTYPE* GetBooleanPtr = NULL;
 	fmi2DoStepTYPE* DoStepPtr = NULL;
 	fmi2GetTypesPlatformTYPE* GetTypesPlatform = NULL;
 	fmi2GetVersionTYPE* GetVersion = NULL;
@@ -50,12 +52,14 @@ int main(int argc, char *argv[]) {
 	TerminatePtr = GetProcAddress(libraryHandle, "fmi2Terminate");
 	SetRealPtr = GetProcAddress(libraryHandle, "fmi2SetReal");
 	GetRealPtr = GetProcAddress(libraryHandle, "fmi2GetReal");
+	SetBooleanPtr = GetProcAddress(libraryHandle, "fmi2SetBoolean");
+	GetBooleanPtr = GetProcAddress(libraryHandle, "fmi2GetBoolean");
 	DoStepPtr = GetProcAddress(libraryHandle, "fmi2DoStep");
 	GetTypesPlatform = GetProcAddress(libraryHandle, "fmi2GetTypesPlatform");
 	GetVersion = GetProcAddress(libraryHandle, "fmi2GetVersion");
 
 	if (NULL == InstantiatePtr || NULL == FreeInstancePtr || NULL == SetupExperimentPtr || NULL == EnterInitializationModePtr || NULL == ExitInitializationModePtr
-		|| NULL == SetRealPtr || NULL == GetRealPtr || NULL == DoStepPtr || NULL == TerminatePtr || NULL == GetTypesPlatform || NULL == GetVersion)
+		|| NULL == SetRealPtr || NULL == GetRealPtr || NULL == SetBooleanPtr || NULL == GetBooleanPtr || NULL == DoStepPtr || NULL == TerminatePtr || NULL == GetTypesPlatform || NULL == GetVersion)
 	{
 		return EXIT_FAILURE;
 	}
