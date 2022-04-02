@@ -79,6 +79,10 @@ int main(int argc, char *argv[]) {
 	// Informs the FMU to setup the experiment. Must be called after fmi2Instantiate and befor fmi2EnterInitializationMode
 	CHECK_STATUS(SetupExperimentPtr(c, fmi2False, 0, Time, fmi2False, 0));
 	
+	// ReturnValue von Ptr
+	/*HRESULT hrReturnVal;
+	hrReturnVal = EnterInitializationModePtr(c);*/
+
 	// Informs the FMU to enter Initialization Mode.
 	CHECK_STATUS(EnterInitializationModePtr(c));
 	
